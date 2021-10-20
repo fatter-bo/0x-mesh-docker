@@ -19,7 +19,7 @@ services:
     image: 0xorg/mesh:latest
     restart: always
     volumes:
-      - ./.zrx_mesh_data::/usr/mesh/0x_mesh
+      - ./.zrx_mesh_data:/usr/mesh/0x_mesh
     ports:
       - '60557:60557'
       - '60558:60558'
