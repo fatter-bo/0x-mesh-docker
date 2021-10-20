@@ -18,25 +18,19 @@ services:
   mesh:
     image: 0xorg/mesh:latest
     restart: always
-    logging:
-      driver: fluentd
-      options:
-        fluentd-address: localhost:24224
-        tag: docker.mesh
-        volumes:
-          - ./.zrx_mesh_data::/usr/mesh/0x_mesh
-        links:
-          - fluentbit
-        ports:
-          - '60557:60557'
-          - '60558:60558'
-          - '60559:60559'
-        environment:
-          - VERBOSITY=5
-          - ETHEREUM_CHAIN_ID=1
-          - ENABLE_GRAPHQL_SERVER=true
-          - GRAPHQL_SERVER_ADDR=0.0.0.0:60557
-            # Set your backing Ethereum JSON RPC endpoint below
-          - ETHEREUM_RPC_URL=ws://host.docker.internal:18536
-          - BLOCK_POLLING_INTERVAL=5s
+    volumes:
+      - ./.zrx_mesh_data::/usr/mesh/0x_mesh
+    ports:
+      - '60557:60557'
+      - '60558:60558'
+      - '60559:60559'
+    environment:
+      - VERBOSITY=5
+      - ETHEREUM_CHAIN_ID=1
+      - ENABLE_GRAPHQL_SERVER=true
+      - GRAPHQL_SERVER_ADDR=0.0.0.0:60557
+        # Set your backing Ethereum JSON RPC endpoint below
+        #- ETHEREUM_RPC_URL=ws://172.17.0.1:18536
+      - ETHEREUM_RPC_URL=ws://host.docker.internal:18536
+      - BLOCK_POLLING_INTERVAL=5s
 
