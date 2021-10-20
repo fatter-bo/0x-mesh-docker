@@ -1,0 +1,13 @@
+version: '3'
+services:
+  zrx_mesh:
+    image: 0xorg/mesh:latest
+    ports:
+      - "60557:60557/tcp"  # RPC_PORT
+      - "60558:60558/tcp"  # P2P_LISTEN_PORT
+    volumes:
+      - ./.zrx_mesh_data:/usr/mesh/0x_mesh
+    environment:
+      ETHEREUM_NETWORK_ID: 1
+      ETHEREUM_RPC_URL: "ws://host.docker.internal:18536"
+      VERBOSITY: 5
