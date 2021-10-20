@@ -8,6 +8,6 @@ services:
     volumes:
       - ./.zrx_mesh_data:/usr/mesh/0x_mesh
     environment:
-      ETHEREUM_NETWORK_ID: 1
+      ETHEREUM_CHAIN_ID: 1
       ETHEREUM_RPC_URL: "ws://host.docker.internal:18536"
       VERBOSITY: 5
